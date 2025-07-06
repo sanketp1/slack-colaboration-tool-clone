@@ -1,0 +1,153 @@
+# Default values for slack-clone
+replicaCount:
+  web: 2
+  api: 2
+
+image:
+  repository: ghcr.io/your-username/slack-clone
+  tag: latest
+  pullPolicy: IfNotPresent
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+
+securityContext: {}
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+  hosts:
+    - host: slack-clone.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
+
+resources:
+  web:
+    limits:
+      cpu: 500m
+      memory: 512Mi
+    requests:
+      cpu: 250m
+      memory: 256Mi
+  api:
+    limits:
+      cpu: 1000m
+      memory: 1Gi
+    requests:
+      cpu: 500m
+      memory: 512Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+# Database configuration
+mongodb:
+  enabled: true
+  image:
+    repository: mongo
+    tag: "7.0"
+  persistence:
+    enabled: true
+    size: 10Gi
+  resources:
+    limits:
+      cpu: 1000m
+      memory: 1Gi
+    requests:
+      cpu: 500m
+      memory: 512Mi
+
+# Redis configuration
+redis:
+  enabled: true
+  image:
+    repository: redis
+    tag: "7.2-alpine"
+  persistence:
+    enabled: true
+    size: 5Gi
+  resources:
+    limits:
+      cpu: 500m
+      memory: 512Mi
+    requests:
+      cpu: 250m
+      memory: 256Mi
+
+# MinIO configuration
+minio:
+  enabled: true
+  image:
+    repository: minio/minio
+    tag: "latest"
+  persistence:
+    enabled: true
+    size: 20Gi
+  resources:
+    limits:
+      cpu: 1000m
+      memory: 1Gi
+    requests:
+      cpu: 500m
+      memory: 512Mi
+  auth:
+    rootUser: minioadmin
+    rootPassword: minioadmin
+
+# LiveKit configuration
+livekit:
+  enabled: true
+  image:
+    repository: livekit/livekit-server
+    tag: "latest"
+  resources:
+    limits:
+      cpu: 2000m
+      memory: 2Gi
+    requests:
+      cpu: 1000m
+      memory: 1Gi
+  config:
+    apiKey: devkey
+    apiSecret: secret
+    port: 7880
+    tcpPort: 7881
+    rtcPortRangeStart: 50000
+    rtcPortRangeEnd: 50100
+
+# Application configuration
+config:
+  jwtSecret: "your-super-secret-jwt-key-32-bytes-long"
+  jwtAlgorithm: "HS256"
+  accessTokenExpireMinutes: 30
+  refreshTokenExpireDays: 7
+  corsOrigins:
+    - "http://localhost:3000"
+    - "https://your-domain.com" 

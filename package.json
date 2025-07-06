@@ -1,0 +1,22 @@
+{
+  "name": "slack-clone-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Modern Slack-like collaboration app with live video support",
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "clean": "turbo run clean",
+    "seed": "cd apps/api && python scripts/seed.py"
+  },
+  "devDependencies": {
+    "turbo": "^1.10.16"
+  },
+  "packageManager": "pnpm@8.6.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
+} 

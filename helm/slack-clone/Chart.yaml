@@ -1,0 +1,17 @@
+apiVersion: v2
+name: slack-clone
+description: A modern Slack-like collaboration app with live video support
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
+keywords:
+  - slack
+  - collaboration
+  - video
+  - chat
+home: https://github.com/your-username/slack-clone
+sources:
+  - https://github.com/your-username/slack-clone
+maintainers:
+  - name: Your Name
+    email: your.email@example.com 
