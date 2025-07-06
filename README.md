@@ -20,10 +20,10 @@ A modern, full-stack Slack-like collaboration platform built with cutting-edge t
 ## 📋 Table of Contents
 
 * [✨ Features](#-features)
-* [🗼 App Preview](#-app-preview)
-* [🛠️ Tech Stack](#-tech-stack)
-* [🏗️ Architecture](#-architecture)
-* [💄 Database Schema](#-database-schema)
+* [🗼️ App Preview](#️-app-preview)
+* [🛠️ Tech Stack](#️-tech-stack)
+* [🏗️ Architecture](#️-architecture)
+* [💄️ Database Schema](#️-database-schema)
 * [📚 Documentation](#-documentation)
 * [🔌 API Reference](#-api-reference)
 * [🚀 Quick Start](#-quick-start)
